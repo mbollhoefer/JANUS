@@ -1,0 +1,37 @@
+JANUS functions to serve the user
+---------------------------------
+o makefile
+  here you may select the file you want to compile
+
+
+o dspdjanus.c, dsymjanus.c, dgnljanus.c, zhpdjanus.c, zherjanus.c, zsymjanus.c,
+  zgnljanus.c
+  very elementary drivers with an inline sparse matrix that demonstrate
+  the basic usage of JANUS for real/non-real matrices (prefix d/z) and its
+  structure-preserving C drivers for
+  the symmetric(Hermitian) positive definite case (dspd/zhpd),
+  the real symmetric/complex Hermitian case (dsym/zher),
+  the complex symmetric case (zsym) and
+  the general case (dgnl/zgnl)
+
+o janusdriver.c, janusdriver_scaled.c
+  main JANUS driver that reads in a matrix in matrix market format,
+  demonstrates how to change the options and calls the iterative
+  solver without diagonal scaling/with diagonal scaling.
+
+o janusdriver_cpp.cpp
+  C++ interface of the JANUS main driver
+
+o bfspaidsym.c, bfspaizher.c, bfspaizsym.c
+  approximate matrix inversion via Neumann series using the (symmetric) block
+  incomplete LDL^T facorization
+
+o dsymselbinv.c, zherselbinv.c, zsymselbinv.c
+  selected inversion using the (symmetric) block incomplete LDL^T facorization
+
+
+o mmio.h, mmio1.h, mmio.hh, mmio.c
+  auxiliary files to read in matrices in matrix market format
+  
+o *.mtx
+  some sample matrices to play around with

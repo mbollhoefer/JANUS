@@ -1,0 +1,25 @@
+JANUS functions to serve the user
+---------------------------------
+
+o [PREC,options]=janus(A,options)
+  compute block incomplete factorization
+o [x,flag,iter,resvec]=janussolver(A,b,restart,tol,maxit,PREC,x0)
+  iterative solver using block ILU
+o nz=janusnnz(PREC)
+  number of nonzeros block ILU
+o janusspy(A,PREC)
+  display block ILU
+o z=janussol(PREC,y), z=janussolh(PREC,y), z=janussolt(PREC,y)
+  separate single forward back substitution with block ILU,
+  its conjugate transpose or its transpose (maybe quite slow)
+o [nz,mxblock,avgblock,stddev]=blockstatistics(PREC)
+  nonzeros, maximum diagonal block size and some other statistics w.r.t. the
+  block ILU
+o iA=symselbinv(PREC)
+  selected block inverse using block ILDL (symmetric case only)
+o iA=symbfspai(PREC,droptol)
+  sparse approximate inverse via Neumann series using block ILDL (symmetric case only)
+o [L,D]=bldl2ldl2(PREC)
+  convert block LDL to scalar LDL
+o [L,D,U]=bldu2ldu2(PREC)
+  convert block LDU to scalar LDU
