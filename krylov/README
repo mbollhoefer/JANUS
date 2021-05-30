@@ -1,0 +1,10 @@
+This subdirectory mainly contains some Krylov subspace methods which are used
+by default with JANUS. The user may certainly use his/her own most favorite
+iterative solvers using the forward/backward solve function of JANUS.
+
+main Krylov subspace routines (most of them are C translations from SPARSKIT,
+updated w.r.t. complex arithmetic, BLAS routines, macros) are:
+
+gmres.c pcg.c sqmr.c
+
+some auxiliary routines are located here as well.
