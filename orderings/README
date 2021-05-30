@@ -1,0 +1,26 @@
+this subdirectory contains subroutines for scaling and reordering the given
+matrix. They are taken from the ILUPACK repository.
+
+The categories are as follows
+
+1) perm*.c refer to the nonsymmetric case with nonsymmetric scalings and
+   symmetric reorderings (mt-Metis, AMD, RCM, null). If the
+   acronym "MC64" is used, then nonsymmetric scaling along with a column
+   permutation is applied in advance in order to obtain a diagonal part with
+   entries of magnitude 1. After that symmetric reorderings are applied
+
+2) symperm*.c refer to the symmetric case with symmetric scalings and
+   symmetric reorderings (mt-Metis, AMD, RCM, null). If the
+   acronym "MC64" is used, then symmetric scaling along with a column
+   permutation and row permutation is applied in advance in order to obtain a
+   block diagonal part with diagonal blocks of size 1x1 and 2x2, hoping that
+   the 1x1 entries are of magnitude 1(not guaranteed) and the diagonal blocks
+   of size 2x2 have at least two entries of magnitude 1(safe). After that
+   symmetric reorderings are applied to the compressed graph, where 2x2 blocks
+   are compressed to a single row/column. At the end, the permutation is
+   prolongued back to the original size respecting the 2x2 diagonal blocks.
+
+3) further routines are also located here
+
+
+   

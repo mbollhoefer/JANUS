@@ -59,8 +59,8 @@
 # complex symmetric driver
 # MAIN=zsymselbinv
 
-# MKL=-D_USE_MKL_
-# USE_METIS4=-D_USE_METIS4_
+#MKL=-D_USE_MKL_
+#USE_METIS4=-D_USE_METIS4_
 
 ifeq ($(MKL),-D_USE_MKL_)
 MKL_INCLUDE=-I$(MKLROOT)/include 
@@ -71,7 +71,7 @@ MKL_LIBS=-llapack -lblas -lblaslike
 endif
 
 ifeq ($(USE_METIS4),-D_USE_METIS4_)
-METIS4_LIB=-lmetis
+METIS4_LIB=-lmetis -lcamd
 else
 METIS4_LIB=
 endif
@@ -80,9 +80,9 @@ endif
 
 
 $(MAIN).out: $(MAIN).o mmio.o
-#	ifort -nofor_main  -O3 -fPIC -qopenmp -i8 -o$(MAIN).out $(MAIN).o mmio.o -L ../lib/INTEL64_long/ -ljanus  -lmtmetis   $(METIS4_LIB) -lamd -lcamd -lsuitesparseconfig -lsparspak $(MKL_LIBPATH) $(MKL_LIBS) 
-	gfortran -O -fPIC -fopenmp -fdefault-integer-8 -fimplicit-none -m64 -mcmodel=medium -o$(MAIN).out $(MAIN).o mmio.o -L ../lib/GNU64_long/ -ljanus  -lmtmetis $(METIS4_LIB) -lamd -lcamd -lsuitesparseconfig -lsparspak $(MKL_LIBPATH) $(MKL_LIBS) -lstdc++
-#	gfortran -g -fsanitize=address,signed-integer-overflow -fPIC -fopenmp -fdefault-integer-8 -fimplicit-none -m64 -mcmodel=medium -o$(MAIN).out $(MAIN).o -L ../lib/GNU64_long/ -ljanus  -lmtmetis  $(METIS4_LIB) -lamd -lcamd -lsuitesparseconfig -lsparspak -llapack -lblas  -lstdc++ -lasan
+#	ifort -nofor_main  -O3 -fPIC -qopenmp -i8 -o$(MAIN).out $(MAIN).o mmio.o -L ../lib/INTEL64_long/ -ljanus  -lmtmetis   $(METIS4_LIB) -lamd -lsuitesparseconfig -lsparspak $(MKL_LIBPATH) $(MKL_LIBS) 
+	gfortran -O -fPIC -fopenmp -fdefault-integer-8 -fimplicit-none -m64 -mcmodel=medium -o$(MAIN).out $(MAIN).o mmio.o -L ../lib/GNU64_long/ -ljanus  -lmtmetis $(METIS4_LIB) -lamd -lsuitesparseconfig -lsparspak $(MKL_LIBPATH) $(MKL_LIBS) -lstdc++
+#	gfortran -g -fsanitize=address,signed-integer-overflow -fPIC -fopenmp -fdefault-integer-8 -fimplicit-none -m64 -mcmodel=medium -o$(MAIN).out $(MAIN).o -L ../lib/GNU64_long/ -ljanus  -lmtmetis  $(METIS4_LIB) -lamd -lsuitesparseconfig -lsparspak -llapack -lblas  -lstdc++ -lasan
 
 # $(MAIN).o: ../lib/INTEL64_long/libjanus.a
 $(MAIN).o: ../lib/GNU64_long/libjanus.a
