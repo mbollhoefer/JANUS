@@ -1,0 +1,46 @@
+Please download mt-METIS
+After you have unpacked mt-METIS, please add at the beginning of the
+"# RUN CMAKE ###" section of "configure" the line
+
+CONFIG_FLAGS="${CONFIG_FLAGS} -DCMAKE_CXX_FLAGS=-fPIC -DCMAKE_C_FLAGS=-fPIC"
+
+to allow for position independent code.
+
+
+After that, depending on whether you prefer 64 BIT long integer either configure
+it via
+
+bash ./configure --edges64bit --vertices64bit --weights64bit --partitions64bit
+
+or if you are satisfied with 32 BIT integer simply configure it using
+
+bash ./configure
+
+The first configuration fits with settings in JANUS/user.mk such as
+"PLATFORM=GNU64_long" or "PLATFORM=INTEL64_long" and it enables 64 BIT
+long integer all the way through.
+
+The second configuration matches settings in JANUS/user.mk like
+"PLATFORM=GNU64" or "PLATFORM=INTEL64" and it works with standard integer
+
+After you have configured your version of mt-METIS, you may copy the
+mt-METIS header file to JANUS/include and the library path JANUS/lib/ArchComp,
+where "ArchComp" refers to your choice of compiler and integer version (e.g.
+GNU64_long).
+
+Once you have copied "mtmetis.h" to JANUS/include, we recommend that you add the
+following block at the beginning of the "TYPES" section of "mtmetis.h" in order
+to correctly reveal the interplay with JANUS
+
+
+#ifdef _LONG_INTEGER_
+#define MTMETIS_64BIT_VERTICES
+#define MTMETIS_64BIT_EDGES
+#define MTMETIS_64BIT_WEIGHTS
+#define MTMETIS_64BIT_PARTITIONS
+#endif
+
+#if !defined _SINGLE_REAL_ && !defined _SINGLE_COMPLEX_
+#define MTMETIS_DOUBLE_REAL
+#endif
+

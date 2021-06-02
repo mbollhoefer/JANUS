@@ -57,6 +57,9 @@ Furthermore you need your own BLAS and LAPACK library. Simple precompiled F77
 sources are could be used, but these are likely to be slow. You better use some
 vendor-specific libraries which highly optimized (if in doubt, ask your system
 administrator for details).
+!!! Make sure that BLAS and LAPACK are consistent with your compiling options, i.e.,
+!!! when you use GNU64_long, INTEL64_long, etc with 64-BIT long integer your
+!!! BLAS and LAPACK library should use INTEGER*8 
 
 Last but not least you need to get MC64 and MC21 from the HSL Mathematical
 Software Library (https://www.hsl.rl.ac.uk/). For copyrights, terms of use, etc.,

@@ -1,0 +1,4 @@
+This subdirectory consists of several suggestions how to set up your makefile
+when operating with different compilers and platforms.
+Please leave "default.mk" and "platforms.mk" unchanged as much as possible and
+only revise "makefile.incluce*"
