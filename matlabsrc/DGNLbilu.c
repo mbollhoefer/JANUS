@@ -63,7 +63,7 @@
 #define TAU      0.8
 /* #define PRINT_CHECK */
 /* #define PRINT_INFO  */
-#define _PROFILING_
+/* #define _PROFILING_ */
 
 #ifdef _PROFILING_
 #include <omp.h>

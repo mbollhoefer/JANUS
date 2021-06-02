@@ -23,3 +23,5 @@ o [L,D]=bldl2ldl2(PREC)
   convert block LDL to scalar LDL
 o [L,D,U]=bldu2ldu2(PREC)
   convert block LDU to scalar LDU
+
+o mmread function to read sample matrices in matrix market format
