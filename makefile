@@ -24,7 +24,7 @@ MYSTARTDIR=$(PWD)
 
 .PHONY:  rpreconditioners rkrylov rorderings  rtools  rlibs \
          cpreconditioners ckrylov corderings  ctools  clibs \
-         clean clear blaslike sparspak atlab
+         clean clear blaslike sparspak matlab
 
 
 all: rpreconditioners rkrylov rorderings  rtools rlibs \
