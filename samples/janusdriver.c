@@ -70,7 +70,7 @@ int main(int argc, char **argv)
        printf("Could not process Matrix Market banner.\n");
        exit(1);
     }
-
+    
     /*  This is how one can screen matrix types if their application */
     /*  only supports a subset of the Matrix Market data types.      */
     if (!mm_is_matrix(matcode) || !mm_is_sparse(matcode)) {
@@ -86,7 +86,7 @@ int main(int argc, char **argv)
        printf("matrix must be square\n");
        exit(1);
     }
-
+    
     /* reserve memory for matrices */
     I  =(MM_INT *)malloc((size_t)nz*sizeof(MM_INT));
     J  =(MM_INT *)malloc((size_t)nz*sizeof(MM_INT));
@@ -130,7 +130,7 @@ int main(int argc, char **argv)
        A.val   =(void **) malloc((size_t)n*sizeof(doublecomplex *));
        pzv=(doublecomplex **)A.val;
     }
-
+    
     // !!!!! ------------------------------------------ !!!!!
     // !!!!! ------------------------------------------ !!!!!
     // !!!!! ------------------------------------------ !!!!!
@@ -191,6 +191,7 @@ int main(int argc, char **argv)
        free(valr);
        free(vali);
     }
+    
     if (A.ishermitian||A.issymmetric)
        if (A.isdefinite)
 	  printf("apply BICHOL to %s, n=%ld,nz=%ld, rel. fill=%8.1le\n",argv[1],n,nz,(double)nz/n);
@@ -268,7 +269,7 @@ int main(int argc, char **argv)
 
 
         
-    if (options.matching)
+    if (options.matching && !A.isdefinite)
        printf("use maximum weight matching\n");
     else
        printf(" no maximum weight matching\n");
@@ -302,7 +303,13 @@ int main(int argc, char **argv)
 	  printf("use ILU(1,%8.1le)   blocking\n",DROP_TOL);
     }
     else if (options.blocking_strategy==BLOCK_ILUPT) {
-       printf("use ILU(%2ld,%8.1le)  blocking\n",LEVEL_OF_FILL,DROP_TOL);
+       if (A.issymmetric||A.ishermitian)
+	  if (A.isdefinite)
+	     printf("use ICHOL(%2ld,%8.1le) blocking\n",LEVEL_OF_FILL,DROP_TOL);
+	  else
+	     printf("use BILDL(%2ld,%8.1le) blocking\n",LEVEL_OF_FILL,DROP_TOL);
+       else
+	  printf("use ILU(%2ld,%8.1le)   blocking\n",LEVEL_OF_FILL,DROP_TOL);
     }
     else // no blocking
        printf(" no blocking\n");

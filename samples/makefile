@@ -65,7 +65,7 @@
 ifeq ($(MKL),-D_USE_MKL_)
 MKL_INCLUDE=-I$(MKLROOT)/include 
 MKL_LIBPATH=-L$(MKLROOT)/lib 
-MKL_LIBS=-lmkl_intel_ilp64 -lmkl_intel_thread -lmkl_core  -lpthread -liomp5
+MKL_LIBS=-lmkl_intel_ilp64 -lblaslike -lmkl_intel_thread -lmkl_core  -lpthread -liomp5
 else
 MKL_LIBS=-llapack -lblas -lblaslike
 endif
@@ -80,9 +80,9 @@ endif
 
 
 $(MAIN).out: $(MAIN).o mmio.o
-#	ifort -nofor_main  -O3 -fPIC -qopenmp -i8 -o$(MAIN).out $(MAIN).o mmio.o -L ../lib/INTEL64_long/ -ljanus  -lmtmetis   $(METIS4_LIB) -lamd -lsuitesparseconfig -lsparspak $(MKL_LIBPATH) $(MKL_LIBS) 
-	gfortran -O -fPIC -fopenmp -fdefault-integer-8 -fimplicit-none -m64 -mcmodel=medium -o$(MAIN).out $(MAIN).o mmio.o -L ../lib/GNU64_long/ -ljanus  -lmtmetis $(METIS4_LIB) -lamd -lsuitesparseconfig -lsparspak $(MKL_LIBPATH) $(MKL_LIBS) -lstdc++
-#	gfortran -g -fsanitize=address,signed-integer-overflow -fPIC -fopenmp -fdefault-integer-8 -fimplicit-none -m64 -mcmodel=medium -o$(MAIN).out $(MAIN).o -L ../lib/GNU64_long/ -ljanus  -lmtmetis  $(METIS4_LIB) -lamd -lsuitesparseconfig -lsparspak -llapack -lblas  -lstdc++ -lasan
+#	ifort -nofor_main  -O3 -fPIC -qopenmp -i8 -o$(MAIN).out $(MAIN).o mmio.o -L ../lib/INTEL64_long/ -ljanus  -lmtmetis   $(METIS4_LIB) -lamd -lsuitesparseconfig -lsparspak $(MKL_LIBPATH) $(MKL_LIBS)  ../lib/GNU64_long/MC*.o
+	gfortran -O -fPIC -fopenmp -fdefault-integer-8 -fimplicit-none -m64 -mcmodel=medium -o$(MAIN).out $(MAIN).o mmio.o -L ../lib/GNU64_long/ -ljanus  -lmtmetis $(METIS4_LIB) -lamd -lsuitesparseconfig -lsparspak $(MKL_LIBPATH) $(MKL_LIBS) -lstdc++ ../lib/GNU64_long/MC*.o
+#	gfortran -g -fsanitize=address,signed-integer-overflow -fPIC -fopenmp -fdefault-integer-8 -fimplicit-none -m64 -mcmodel=medium -o$(MAIN).out $(MAIN).o -L ../lib/GNU64_long/ -ljanus  -lmtmetis  $(METIS4_LIB) -lamd -lsuitesparseconfig -lsparspak -llapack -lblas  -lstdc++ -lasan ../lib/GNU64_long/MC*.o
 
 # $(MAIN).o: ../lib/INTEL64_long/libjanus.a
 $(MAIN).o: ../lib/GNU64_long/libjanus.a
