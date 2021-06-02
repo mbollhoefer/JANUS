@@ -24,14 +24,14 @@ MYSTARTDIR=$(PWD)
 
 .PHONY:  rpreconditioners rkrylov rorderings  rtools  rlibs \
          cpreconditioners ckrylov corderings  ctools  clibs \
-         clean clear blaslike sparspak suitesparseconfig matlab
+         clean clear blaslike sparspak atlab
 
 
 all: rpreconditioners rkrylov rorderings  rtools rlibs \
      cpreconditioners ckrylov corderings ctools clibs \
-     blaslike sparspak suitesparseconfig matlab
+     blaslike sparspak matlab
 
-real: rpreconditioners rkrylov rorderings rtools rlibs 
+real: rpreconditioners blaslike rkrylov rorderings rtools rlibs 
 
 complex: cpreconditioners blaslike ckrylov corderings ctools clibs
 
@@ -102,13 +102,13 @@ ctools:
 
 
 
-rlibs:   rpreconditioners rkrylov rorderings  rtools  sparspak suitesparseconfig
+rlibs:   rpreconditioners rkrylov rorderings  rtools  sparspak blaslike
 	@ echo build double real libraries
 	@ cd lib;\
         $(MAKE) "ARITHMETIC=-D_DOUBLE_REAL_"    "MYPLATFORM=$(PLATFORM)" \
         "MYSTARTDIR=$(STARTDIR)" "FLOAT=D"
 
-clibs:   cpreconditioners ckrylov corderings ctools   sparspak suitesparseconfig
+clibs:   cpreconditioners ckrylov corderings ctools   sparspak blaslike
 	@ echo build double complex libraries
 	@ cd lib;\
         $(MAKE) "ARITHMETIC="    "MYPLATFORM=$(PLATFORM)" \
