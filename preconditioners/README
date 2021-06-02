@@ -1,0 +1,4 @@
+main block ILU preconditioners for various cases along with a couple of blocking
+strategies and drivers that allow for slected call of the core block ILUs
+In addition two classes of matrix inversion routines (approximate Neumann series
+and selected inversion) are offered for symmetric matrices
