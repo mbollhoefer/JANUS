@@ -149,7 +149,7 @@ C this one shall be removed or altered in any way.
 2. MT-METIS
    MIT License (MIT)
 
-   Copyright (c) 2013-2015, Regents of the University of Minnesota 
+   Copyright (c) 2013-2017, Regents of the University of Minnesota 
 
    Permission is hereby granted, free of charge, to any person obtaining a copy
    of this software and associated documentation files (the "Software"), to deal
@@ -169,13 +169,13 @@ C this one shall be removed or altered in any way.
    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
    THE SOFTWARE.
 
-        -----------------------------------------------------------------
+         ----------------------------------------------------------------
 
    This license only applies to the mt-Metis code, the software packages included
    with this distribution are distributed under their respective licenses:
 
    metis/LICENSE.txt
-   bowstring/LICENSE
+   wildriver/LICENSE
    domlib/LICENSE
 
 
