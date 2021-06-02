@@ -68,9 +68,8 @@ $(MEXDIR)/%.$(EXT): %.c ../lib/$(PLATFORM)/libjanus.a
 
 # 64 BIT ------------------------------
 # gcc/gfortran with mexopts77_gfortran.sh 
-#	$(CMEX) -O CFLAGS='$(CFLAGS) -fPIC -fopenmp' LDFLAGS='$(LDFLAGS) -fopenmp' -largeArrayDims -D_LONG_INTEGER_  $(MATCHING) $(FORTRANNAMES) -I../include -outdir $(MEXDIR) $<  -L../lib/$(PLATFORM) -ljanus -lsparspak -lamd -lsuitesparseconfig -lmwlapack -lmwblas -lblaslike -lm -lc -lgfortran ../lib/$(PLATFORM)/MC*.o
-	$(CMEX) -O CFLAGS='$(CFLAGS) -fPIC -fopenmp' LDFLAGS='$(LDFLAGS) -fopenmp' -largeArrayDims -D_LONG_INTEGER_  $(MATCHING) $(FORTRANNAMES) -I../include -outdir $(MEXDIR) $< -L../lib/$(PLATFORM) -ljanus -lsparspak -lmtmetis -lamd -lsuitesparseconfig -lmwlapack -lmwblas -lblaslike -lm -lc -lgfortran ../lib/$(PLATFORM)/MC*.o
-#	$(CMEX) -O CFLAGS='$(CFLAGS) -fPIC -fopenmp' LDFLAGS='$(LDFLAGS) -fopenmp' -largeArrayDims -D_LONG_INTEGER_ $(MATCHING) $(FORTRANNAMES)  -outdir $(MEXDIR) $< -L../lib/$(PLATFORM) -ljanus -lsparspak -lmtmetis  -lamd -lsuitesparseconfig -lmwlapack -lmwblas -lblaslike -lm -lc -lgfortran $(MKL_LIBPATH) -lmkl_intel_ilp64 -lmkl_intel_thread -lmkl_core -lpthread -liomp5 ../lib/$(PLATFORM)/MC*.o
+	$(CMEX) -O CFLAGS='$(CFLAGS) -fPIC -fopenmp' LDFLAGS='$(LDFLAGS) -fopenmp' -largeArrayDims -D_LONG_INTEGER_ $(MATCHING) $(FORTRANNAMES) -I../include -outdir $(MEXDIR) $< -L../lib/$(PLATFORM) -ljanus -lsparspak -lmtmetis -lamd -lsuitesparseconfig -lmwlapack -lmwblas -lblaslike -lm -lc -lgfortran ../lib/$(PLATFORM)/MC*.o
+#	$(CMEX) -O CFLAGS='$(CFLAGS) -fPIC -fopenmp' LDFLAGS='$(LDFLAGS) -fopenmp' -largeArrayDims -D_LONG_INTEGER_ $(MATCHING) $(FORTRANNAMES) -I../include -outdir $(MEXDIR) $< -L../lib/$(PLATFORM) -ljanus -lsparspak -lmtmetis  -lamd -lsuitesparseconfig -lmwlapack -lmwblas -lblaslike -lm -lc -lgfortran $(MKL_LIBPATH) -lmkl_intel_ilp64 -lmkl_intel_thread -lmkl_core -lpthread -liomp5 ../lib/$(PLATFORM)/MC*.o
 # 64 BIT ------------------------------
 
 
