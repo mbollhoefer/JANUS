@@ -1,0 +1,3 @@
+This subdirectory consists of further subroutines that are neither
+preconditioners nor Krylov subspace solvers nor orderings nor MATLAB
+E.g. matrix-vector multiplications, sort routines, some wrappers, etc
