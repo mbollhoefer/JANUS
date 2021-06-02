@@ -167,6 +167,9 @@ SPARSPAK=$(DIRSPARSPAK)genrcm.o \
          $(DIRSPARSPAK)revrse.o \
          $(DIRSPARSPAK)fnroot.o
 
+BLASLIKE=$(DIRBLASLIKE)zrot.o  \
+         $(DIRBLASLIKE)crot.o  
+
 
 
 
