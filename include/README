@@ -1,0 +1,4 @@
+various header files to be included from JANUS.
+Some of them are maybe not most recent (amd.h, SuiteSparse_config.h,
+mtmetis.h,...). If in doubt, replace the headers along with the correct
+binaries and libraries
