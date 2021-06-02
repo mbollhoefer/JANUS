@@ -144,7 +144,7 @@ myoptions.ordering='mtmetis';
 myoptions.droptol=1e-3;
 myoptions.cosine='no';
 myoptions.blocking_strategy='ilupt';
-myoptions.level_of_fill=3;
+myoptions.level_of_fill=5;
 myoptions.progressive_aggregation='yes';
 myoptions.invert_blocks=1;
 
